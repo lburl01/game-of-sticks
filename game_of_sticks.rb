@@ -31,19 +31,15 @@ require_relative "sticks.rb"
 
 def main
   puts "Welcome to the Game of Sticks!"
-  puts "How many sticks are on the table initially (10-100)? > "
-  loop do
-    initial_stick_input = gets.chomp.to_i
-    initial_sticks = Sticks.new(initial_stick_input, 0)
-    initial_sticks = initial_sticks.validating_initial_sticks(initial_sticks.total_stick_count)
-    if initial_sticks == false
-      puts "Try entering a number between 10 and 100 > "
-    else
-      break
-    end
-  end
 
-  
+  initial_stick_input = Sticks.get_initial_stick_count
+
+  sticks = Sticks.new(initial_stick_input, 0)
+
+  puts "There are #{sticks.total_stick_count} sticks on the table."
+
+  player_one_choice = sticks.get_player_one_choice
+
 end
 
 if __FILE__ == $PROGRAM_NAME
