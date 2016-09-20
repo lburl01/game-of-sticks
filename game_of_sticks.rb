@@ -27,13 +27,25 @@
 # Write a main() function with a game loop that uses your already tested and developed functionality in conjunction with getting user input and printing output.
 # -----------------------------
 
+require_relative "sticks.rb"
+
 def main
   puts "Welcome to the Game of Sticks!"
   puts "How many sticks are on the table initially (10-100)? > "
-  initial_stick_input = gets.chomp.to_i
-  initial_sticks = Sticks.new(initial_stick_input)
+  loop do
+    initial_stick_input = gets.chomp.to_i
+    initial_sticks = Sticks.new(initial_stick_input, 0)
+    initial_sticks = initial_sticks.validating_initial_sticks(initial_sticks.total_stick_count)
+    if initial_sticks == false
+      puts "Try entering a number between 10 and 100 > "
+    else
+      break
+    end
+  end
+
+  
 end
 
-if __FILE__ = $PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
   main
 end
