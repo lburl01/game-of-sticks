@@ -32,10 +32,10 @@ class Sticks
     return initial_stick_input
   end
 
-  def get_player_choice(which_player)
+  def get_player_choice(which_player, opponent_choice)
     @last_player = which_player
 
-    # if # something to differentiate from robot_sticks
+    if opponent_choice == 1
       loop do
         player_sticks_to_remove = gets.chomp
 
@@ -46,9 +46,9 @@ class Sticks
           puts "You can't do that. Try choosing 1, 2, or 3. > "
         end
       end
-    # else
-    #   # robot sticks taken goes here - set to instance variable, I think.
-    # end
+    elsif opponent_choice == 2
+      @player_sticks_taken = 1
+    end
   end
 
   def subtract_player_sticks()
