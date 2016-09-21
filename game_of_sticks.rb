@@ -16,7 +16,7 @@ def main
   initial_stick_input = Sticks.get_initial_stick_count
 
   sticks = Sticks.new(initial_stick_input, 0)
-  robot_sticks = Sticks.new(sticks.total_stick_count, 0) # stick count after robot removes not updating because of this being set.
+  # robot_sticks = Sticks.new(sticks.total_stick_count, 0) # why do I not need this?
 
   puts "There are #{sticks.total_stick_count} sticks on the table."
 
@@ -46,7 +46,7 @@ def main
       elsif opponent_choice == 2
 
         robot_choice = sticks.get_player_choice("Robot", 2)
-        puts "Robot removes 1 stick."
+        
         after_robot_removes = sticks.subtract_player_sticks
 
         robot_count_update = sticks.print_total_stick_count

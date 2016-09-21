@@ -47,7 +47,9 @@ class Sticks
         end
       end
     elsif opponent_choice == 2
-      @player_sticks_taken = 1
+      random_robot_sticks_taken = rand(1..3)
+      @player_sticks_taken = random_robot_sticks_taken
+      puts "Robot took #{random_robot_sticks_taken}"
     end
   end
 
