@@ -78,8 +78,10 @@ class Sticks
     else
       if @last_player == "Player One"
         puts "Congrats, Player Two! You're the winner."
+        exit
       elsif @last_player == "Player Two"
         puts "Congrats, Player One! You're the winner."
+        exit
       end
     end
   end
