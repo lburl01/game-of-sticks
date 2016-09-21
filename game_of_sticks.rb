@@ -15,7 +15,8 @@ def main
 
   initial_stick_input = Sticks.get_initial_stick_count
 
-  sticks = Sticks.new(initial_stick_input, 0, 0)
+  sticks = Sticks.new(initial_stick_input, 0)
+  robot_sticks = Sticks.new(initial_stick_input, 0)
 
   puts "There are #{sticks.total_stick_count} sticks on the table."
 
@@ -43,9 +44,12 @@ def main
         player_two_count_update = sticks.print_total_stick_count
 
       elsif opponent_choice == 2
-        # robot_choice = 1
-        #
-        # after_robot_sticks_removed =
+
+        # robot_choice = robot_sticks.get_player_choice("Robot")
+
+        after_robot_removes = robot_sticks.subtract_player_sticks
+
+        robot_count_update = robot_sticks.print_total_stick_count
       end
     end
 

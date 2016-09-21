@@ -1,7 +1,7 @@
 class Sticks
   attr_reader :total_stick_count, :player_sticks_taken
 
-  def initialize(total_stick_count, player_sticks_taken, last_player)
+  def initialize(total_stick_count, player_sticks_taken)
     @total_stick_count = total_stick_count
     @player_sticks_taken = player_sticks_taken
     @sticks_taken = {
@@ -9,7 +9,6 @@ class Sticks
       "2" => 2,
       "3" => 3
     }
-    @last_player = last_player
   end
 
   def Sticks.get_initial_stick_count
@@ -33,52 +32,23 @@ class Sticks
     return initial_stick_input
   end
 
-  def get_player_one_choice
-    puts "Player One, how many sticks are you picking up (1-3)?"
-    @last_player = "Player One"
-    loop do
-      player_one_sticks = gets.chomp
-
-      if @sticks_taken.has_key? player_one_sticks
-        @player_sticks_taken = @sticks_taken[player_one_sticks]
-        break
-      else
-        puts "You can't do that, try choosing a number between 1-3. > "
-      end
-
-    end
-  end
-
-  # def get_player_two_choice
-  #   puts "Player Two, how many sticks are you picking up (1-3)?"
-  #   @last_player = "Player Two"
-  #
-  #   loop do
-  #     player_two_sticks = gets.chomp
-  #
-  #     if @sticks_taken.has_key? player_two_sticks
-  #       @player_sticks_taken = @sticks_taken[player_two_sticks]
-  #       break
-  #     else
-  #       puts "You can't do that, try choosing a number between 1-3. > "
-  #     end
-  #
-  #   end
-  # end
-
   def get_player_choice(which_player)
     @last_player = which_player
 
-    loop do
-      player_sticks_to_remove = gets.chomp
+    # if # something to differentiate from robot_sticks
+      loop do
+        player_sticks_to_remove = gets.chomp
 
-      if @sticks_taken.has_key? player_sticks_to_remove
-        @player_sticks_taken = @sticks_taken[player_sticks_to_remove]
-        break
-      else
-        puts "You can't do that. Try choosing 1, 2, or 3. > "
+        if @sticks_taken.has_key? player_sticks_to_remove
+          @player_sticks_taken = @sticks_taken[player_sticks_to_remove]
+          break
+        else
+          puts "You can't do that. Try choosing 1, 2, or 3. > "
+        end
       end
-    end
+    # else
+    #   # robot sticks taken goes here - set to instance variable, I think.
+    # end
   end
 
   def subtract_player_sticks()
@@ -92,13 +62,8 @@ class Sticks
     if @total_stick_count >= 1
       puts "There are #{@total_stick_count} sticks on the table."
     else
-      if @last_player == "Player One"
-        puts "Congrats, Player Two! You're the winner."
-        exit
-      elsif @last_player == "Player Two"
-        puts "Congrats, Player One! You're the winner."
-        exit
-      end
+      puts "Sorry, #{@last_player}! You lost."
+      exit
     end
   end
 
