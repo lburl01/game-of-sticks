@@ -64,8 +64,7 @@ class Sticks
     if @total_stick_count >= 1
       puts "There are #{@total_stick_count} sticks on the table."
     else
-      puts "Sorry, #{@last_player}! You lost."
-      exit
+      puts "Sorry, #{@last_player}! You lost"
     end
   end
 
