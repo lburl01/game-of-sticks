@@ -26,24 +26,27 @@ def main
 
   opponent_choice = who_is_playing
 
-    if opponent_choice == 1
+    while sticks.total_stick_count != 0
+      puts "Player One, how many sticks are you picking up (1-3)?"
+      player_one_choice = sticks.get_player_choice("Player One")
 
-      while sticks.total_stick_count != 0
-        player_one_choice = sticks.get_player_one_choice
+      after_player_one_removes = sticks.subtract_player_sticks
 
-        after_player_one_removes = sticks.subtract_player_sticks
+      player_one_count_update = sticks.print_total_stick_count
 
-        player_one_count_update = sticks.print_total_stick_count
-
-        player_two_choice = sticks.get_player_two_choice
+      if opponent_choice == 1
+        puts "Player Two, how many sticks are you picking up (1-3)?"
+        player_two_choice = sticks.get_player_choice("Player Two")
 
         after_player_two_removes = sticks.subtract_player_sticks
 
         player_two_count_update = sticks.print_total_stick_count
-      end
 
-    elsif opponent_choice == 2
-      # play against the AI!
+      elsif opponent_choice == 2
+        # robot_choice = 1
+        #
+        # after_robot_sticks_removed =
+      end
     end
 
 end

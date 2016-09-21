@@ -49,19 +49,35 @@ class Sticks
     end
   end
 
-  def get_player_two_choice
-    puts "Player Two, how many sticks are you picking up (1-3)?"
-    @last_player = "Player Two"
-    loop do
-      player_two_sticks = gets.chomp
+  # def get_player_two_choice
+  #   puts "Player Two, how many sticks are you picking up (1-3)?"
+  #   @last_player = "Player Two"
+  #
+  #   loop do
+  #     player_two_sticks = gets.chomp
+  #
+  #     if @sticks_taken.has_key? player_two_sticks
+  #       @player_sticks_taken = @sticks_taken[player_two_sticks]
+  #       break
+  #     else
+  #       puts "You can't do that, try choosing a number between 1-3. > "
+  #     end
+  #
+  #   end
+  # end
 
-      if @sticks_taken.has_key? player_two_sticks
-        @player_sticks_taken = @sticks_taken[player_two_sticks]
+  def get_player_choice(which_player)
+    @last_player = which_player
+
+    loop do
+      player_sticks_to_remove = gets.chomp
+
+      if @sticks_taken.has_key? player_sticks_to_remove
+        @player_sticks_taken = @sticks_taken[player_sticks_to_remove]
         break
       else
-        puts "You can't do that, try choosing a number between 1-3. > "
+        puts "You can't do that. Try choosing 1, 2, or 3. > "
       end
-
     end
   end
 
